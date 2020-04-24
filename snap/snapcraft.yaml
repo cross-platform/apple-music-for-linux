@@ -15,6 +15,22 @@ parts:
       - chromium-browser
       - chromium-codecs-ffmpeg-extra
 
+  cleanup:
+      after: [ chromium ]
+      plugin: nil
+      build-snaps:
+          - core18
+          - gnome-3-28-1804
+          - gtk-common-themes
+      override-prime: |
+          set -eux
+          cd /snap/core18/current
+          find . -type f,l -exec rm -f $SNAPCRAFT_PRIME/{} \;
+          cd /snap/gnome-3-28-1804/current
+          find . -type f,l -exec rm -f $SNAPCRAFT_PRIME/{} \;
+          cd /snap/gtk-common-themes/current
+          find . -type f,l -exec rm -f $SNAPCRAFT_PRIME/usr/{} \;
+
 apps:
   apple-music-for-linux:
     command: apple-music-for-linux.launcher
