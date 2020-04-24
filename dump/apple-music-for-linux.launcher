@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec "$SNAP/usr/lib/chromium-browser/chromium-browser" "--no-sandbox" "--app=https://music.apple.com/" "--window-size=1000,600"

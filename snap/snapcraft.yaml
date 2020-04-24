@@ -1,0 +1,27 @@
+name: apple-music-for-linux
+version: '0.1'
+summary: Apple Music for Linux
+description: Apple Music for Linux
+
+grade: stable
+confinement: strict
+base: core18
+
+parts:
+  chromium:
+    source: dump
+    plugin: dump
+    stage-packages:
+      - chromium-browser
+      - chromium-codecs-ffmpeg-extra
+
+apps:
+  apple-music-for-linux:
+    command: apple-music-for-linux.launcher
+    extensions: [gnome-3-28]
+    plugs:
+      - audio-playback
+      - browser-support
+      - network
+    environment:
+      DISABLE_WAYLAND: 1
