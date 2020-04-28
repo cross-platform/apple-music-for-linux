@@ -1,3 +1,17 @@
 #!/bin/sh
 
-exec "$SNAP/usr/lib/chromium-browser/chromium-browser" "--no-sandbox" "--app=https://music.apple.com/" "--window-size=1000,600"
+if [ ! -d $SNAP_USER_DATA/.local/lib/WidevineCdm ]; then
+    if zenity --question --width=600 --title="Apple Music" --text="This application requires Widevine™️ in order to play DRM protected media.\n\nWould you like to download it now?\n\n(For more info visit: <a href='https://www.widevine.com'>https://www.widevine.com</a>)"
+    then
+        mkdir -p $SNAP_USER_DATA/.local/lib/WidevineCdm/_platform_specific/linux_x64/
+        cd $SNAP_USER_DATA/.local/lib/WidevineCdm
+
+        wget https://dl.google.com/widevine-cdm/4.10.1582.2-linux-x64.zip
+        unzip 4.10.1582.2-linux-x64.zip && rm 4.10.1582.2-linux-x64.zip
+        mv libwidevinecdm.so ./_platform_specific/linux_x64/
+
+        zenity --info --width=500 --title="Apple Music" --text="Widevine™️ was successfully downloaded to:\n\n<i>~/snap/apple-music-for-linux/current/.local/lib/WidevineCdm</i>"
+    fi
+fi
+
+exec "$SNAP/usr/lib/chromium-browser/chromium-browser" "--no-sandbox" "--app=https://music.apple.com/" "--disable-sync" "--window-size=1000,600"

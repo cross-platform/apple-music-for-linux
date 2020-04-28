@@ -1,11 +1,15 @@
 name: apple-music-for-linux
-version: '0.1'
+version: '0.2'
 summary: Apple Music for Linux
 description: Apple Music for Linux
 
 grade: stable
 confinement: strict
 base: core18
+
+layout:
+  /usr/share/zenity:
+    bind: $SNAP/usr/share/zenity
 
 parts:
   chromium:
@@ -14,6 +18,9 @@ parts:
     stage-packages:
       - chromium-browser
       - chromium-codecs-ffmpeg-extra
+      - unzip
+      - wget
+      - zenity
 
   cleanup:
       after: [ chromium ]
