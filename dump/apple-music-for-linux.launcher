@@ -27,4 +27,6 @@ then
     fi
 fi
 
-exec "$SNAP/usr/lib/chromium-browser/chromium-browser" "--no-sandbox" "--app=https://music.apple.com/" "--disable-sync" "--window-size=1000,600"
+cc=$(locale -k LC_ADDRESS | grep "country_ab2" | cut -d'"' -f 2)
+
+exec "$SNAP/usr/lib/chromium-browser/chromium-browser" "--no-sandbox" "--app=https://music.apple.com/$cc/browse" "--disable-sync" "--window-size=1000,600"
