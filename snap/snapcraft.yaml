@@ -1,5 +1,5 @@
 name: apple-music-for-linux
-version: '0.3'
+version: '0.4'
 summary: Apple Music for Linux
 description: Apple Music for Linux
 
@@ -46,5 +46,6 @@ apps:
       - audio-playback
       - browser-support
       - network
+      - upower-observe
     environment:
       DISABLE_WAYLAND: 1
