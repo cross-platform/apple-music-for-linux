@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "command": ["rm -rf node_modules package-lock.json &&",
+                        "npm install &&",
+                        "rm -rf dist &&",
+                        "npm run dist"],
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": {
+                "base": "$gcc", "fileLocation": ["relative", "${workspaceFolder}"]
+            }
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "command": ["npm start"],
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": {
+                "base": "$gcc", "fileLocation": ["relative", "${workspaceFolder}"]
+            }
+        },
+        {
+            "label": "Reinstall & Run Snap",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "command": ["rm -rf ~/snap/apple-music-for-linux &&",
+                        "snap remove apple-music-for-linux &&",
+                        "snap install dist/apple-music-for-linux_0.7.0_amd64.snap --dangerous &&",
+                        "apple-music-for-linux"],
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": {
+                "base": "$gcc", "fileLocation": ["relative", "${workspaceFolder}"]
+            }
+        }
+    ]
+}

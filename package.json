@@ -1,0 +1,46 @@
+{
+  "name": "apple-music-for-linux",
+  "author": "Marcus Tomlinson",
+  "version": "0.7.0",
+  "description": "Apple Music for Linux",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux snap"
+  },
+  "build": {
+    "electronDownload": {
+      "mirror": "https://github.com/castlabs/electron-releases/releases/download/v"
+    },
+    "appId": "apple-music-for-linux",
+    "productName": "Apple Music",
+    "linux": {
+      "target": "snap",
+      "icon": "apple-music-for-linux.png",
+      "category": "Audio"
+    },
+    "snap": {
+      "grade": "stable",
+      "confinement": "strict",
+      "plugs": [
+        "audio-playback",
+        "browser-support",
+        "desktop",
+        "desktop-legacy",
+        "home",
+        "network",
+        "opengl",
+        "x11"
+      ],
+      "desktop": {
+        "StartupWMClass": "apple-music-for-linux"
+      }
+    }
+  },
+  "repository": "https://github.com/cross-platform/apple-music-for-linux",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "https://github.com/castlabs/electron-releases#v13.0.1-wvvmp",
+    "electron-builder": "^22.7.0"
+  }
+}

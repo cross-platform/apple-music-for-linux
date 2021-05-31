@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=0.6
-Name=Apple Music
-GenericName=Apple Music
-Comment=Apple Music
-Type=Application
-Icon=${SNAP}/meta/gui/apple-music-for-linux.png
-Exec=apple-music-for-linux
-StartupWMClass=apple-music-for-linux
