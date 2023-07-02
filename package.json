@@ -34,7 +34,10 @@
       ],
       "desktop": {
         "StartupWMClass": "apple-music-for-linux"
-      }
+      },
+      "slots": [ 
+        { "mpris": { "name": "chromium" } } 
+      ]
     }
   },
   "repository": "https://github.com/cross-platform/apple-music-for-linux",
