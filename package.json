@@ -44,6 +44,6 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "https://github.com/castlabs/electron-releases#v13.0.1-wvvmp",
-    "electron-builder": "^22.7.0"
+    "electron-builder": "^24.13.3"
   }
 }
